@@ -1,0 +1,27 @@
+
+
+
+
+<div class="container-fluid bg-3">
+  <h1 class="text-center">HCI Faith Temple Members</h1><hr>
+
+  <% unless current_user.member_account %>
+    <%= link_to 'New Member', new_member_account_path, class:"btn-lg btn-success" %>
+  <% end %>
+  <hr><br>
+
+  <div class="row">
+    <% @member_accounts.each do |member_account| %>
+    <div class="col-sm-3">
+      <h4><%= "#{member_account.first_name} #{member_account.last_name}" %></h4>
+      <a href="<%= member_account_path(member_account.id) %>">
+      <img src="<%= polymorphic_url(member_account.picture) %>" class="img-responsive" style="width:100%" alt="Image">
+      </a>
+      <hr>
+    </div>
+    <% end %>
+  </div>
+
+</div>
+
+<br>
